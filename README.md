@@ -104,9 +104,7 @@ def warpImage(img):
 
 I tuned these source and destination points on straight lane test images. And here's what the output looks like on straight lines (with the points drawn):
 
-<img src="output_images/perspective_transform.png" width="500"/>
-
-<img src="output_images/warp_image.png" width="250"/>
+<img src="output_images/perspective_transform.png" width="500"/> <img src="output_images/warp_image.png" width="250"/>
 
 
 ### Finding Lane Line Pixels and Fitting
