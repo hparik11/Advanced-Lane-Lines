@@ -58,7 +58,7 @@ In order to accurately find the lane lines in an image, I explored several combi
 
 <img src="output_images/color_thresholding.png" width="1000"/>
 
-After appkying many combinations, it was found that none of these were very robust to changing conditions in lighting and contrast. After doing some research on internet, it was found that using a second derivative operation (Laplacian) might be more suited to this purpose. By using a Laplacian filter (using `cv2.Laplacian`) on the image followed by thresholding it to highlight only the negative values, it's possible to reject many of the false positives [ [Ref](http://www.eng.utah.edu/~hamburge/Road_Marking_Features_and_Processing_Steps.pdf) ]. The Laplacian resulted in better results than using combinations of Sobel gradients.
+After applying many combinations, it was found that none of these were very robust to changing conditions in lighting and contrast. After doing some research on internet, it was found that using a second derivative operation (Laplacian) might be more suited to this purpose. By using a Laplacian filter (using `cv2.Laplacian`) on the image followed by thresholding it to highlight only the negative values, it's possible to reject many of the false positives [ [Ref](http://www.eng.utah.edu/~hamburge/Road_Marking_Features_and_Processing_Steps.pdf) ]. The Laplacian resulted in better results than using combinations of Sobel gradients.
 
 The thresholding operations used to detect edges in the images can be found in `Advance_Lane_Detection.ipynb` in the function called `find_edges`. The thresholded binary mask obtained from the Laplacian is named `mask_one` in the code. The thresholding is first performed on the S-channel of the image in HLS colorspace. If too few pixels were detected by this method (less than 1% of total number of pixels), then the Laplacian thresholding is attempted on the grayscale image.
 
@@ -104,9 +104,9 @@ def warpImage(img):
 
 I tuned these source and destination points on straight lane test images. And here's what the output looks like on straight lines (with the points drawn):
 
-<img src="output_images/perspective_transform.png" width="600"/>
+<img src="output_images/perspective_transform.png" width="500"/>
 
-<img src="output_images/warp_image.png" width="300"/>
+<img src="output_images/warp_image.png" width="250"/>
 
 
 ### Finding Lane Line Pixels and Fitting
@@ -126,7 +126,7 @@ For a previous fit, the window is the previous fit +/- 100 px so it's a polynomi
 
 ### Calculating Corner Radius and Lane Center
 
-The radius of curvature is based upon [this website](http://www.intmath.com/applications-differentiation/8-radius-curvature.php) and calculated in the code cell titled "Radius of Curvature and Distance from Lane Center Calculation" using this line of code (altered for clarity):
+The radius of curvature is based upon [this website](http://www.intmath.com/applications-differentiation/8-radius-curvature.php) and calculated in the code cell titled "Radius of Curvature and Distance from Lane Center Calculation" using this line of code:
 ```
 curve_radius = ((1 + (2*fit[0]*y_0*y_meters_per_pixel + fit[1])**2)**1.5) / np.absolute(2*fit[0])
 ```
