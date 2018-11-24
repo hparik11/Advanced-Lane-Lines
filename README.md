@@ -2,8 +2,9 @@
 
 The goal of this project is to produce a robust pipeline for detecting lane lines given a raw image from a car's dash cam. The pipeline should output a visual display of the lane boundaries, numerical estimation of lane curvature, and vehicle position within the lane.
 
-<img src="test_images/straight_lines1.jpg" width="500"/>  <img src="output_images/straight_lines1_output.jpg" width="500"/>
+<!-- <img src="test_images/straight_lines1.jpg" width="300"/>  -->
 
+<img src="output_images/lane_detection.gif" width="500"/>
 
 ## Solution
 
@@ -27,7 +28,7 @@ The code for this step is contained in the Jupyter notebook `Camera_Calibration.
 
 The OpenCV functions `findChessboardCorners` and `calibrateCamera` are the backbone of the image calibration. A number of images of a chessboard, taken from different angles with the same camera, comprise the input. Arrays of object points, corresponding to the location (essentially indices) of internal corners of a chessboard, and image points, the pixel locations of the internal chessboard corners determined by `findChessboardCorners`, are fed to `calibrateCamera` which returns camera calibration and distortion coefficients. These can then be used by the OpenCV `undistort` function to undo the effects of distortion on any image produced by the same camera. Generally, these coefficients will not change for a given camera (and lens). The below image depicts the corners drawn onto twenty chessboard images using the OpenCV function `drawChessboardCorners`: Here an original image (left) and an undistorted image (right):
 
-<img src="camera_cal/calibration1.jpg" width="500"/>  <img src="camera_cal_output/undistort_imgs/calibration_undistort1.jpg" width="500"/>
+<img src="camera_cal/calibration1.jpg" width="350"/>  <img src="camera_cal_output/undistort_imgs/calibration_undistort1.jpg" width="350"/>
 
 ### Distortion Correction
 
@@ -48,7 +49,7 @@ def imgUndistort(img, mtx=mtx, dist=dist):
 
 Here's an example of an original image, and an undistorted version of that image.
 
-<img src="test_images/straight_lines1.jpg" width="500"/>  <img src="output_images/undistort/straight_lines1_output.jpg" width="500"/>
+<img src="test_images/straight_lines1.jpg" width="350"/>  <img src="output_images/undistort/straight_lines1_output.jpg" width="350"/>
 
 
 ### Thresholded Binary Images
@@ -103,9 +104,9 @@ def warpImage(img):
 
 I tuned these source and destination points on straight lane test images. And here's what the output looks like on straight lines (with the points drawn):
 
-<img src="output_images/perspective_transform.png" width="750"/>
+<img src="output_images/perspective_transform.png" width="600"/>
 
-<img src="output_images/warp_image.png" width="380"/>
+<img src="output_images/warp_image.png" width="300"/>
 
 
 ### Finding Lane Line Pixels and Fitting
