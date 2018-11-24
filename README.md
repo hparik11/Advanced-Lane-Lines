@@ -27,7 +27,7 @@ The code for this step is contained in the Jupyter notebook `Camera_Calibration.
 
 The OpenCV functions `findChessboardCorners` and `calibrateCamera` are the backbone of the image calibration. A number of images of a chessboard, taken from different angles with the same camera, comprise the input. Arrays of object points, corresponding to the location (essentially indices) of internal corners of a chessboard, and image points, the pixel locations of the internal chessboard corners determined by `findChessboardCorners`, are fed to `calibrateCamera` which returns camera calibration and distortion coefficients. These can then be used by the OpenCV `undistort` function to undo the effects of distortion on any image produced by the same camera. Generally, these coefficients will not change for a given camera (and lens). The below image depicts the corners drawn onto twenty chessboard images using the OpenCV function `drawChessboardCorners`: Here an original image (left) and an undistorted image (right):
 
-<img src="camera_cal/calibration1.jpg" width="500"/>  <img src="camera_cal_output/undistort_imgs/calibration_undistort1.jpg" width="500"/>
+<img src="camera_cal/calibration1.jpg" width="350"/>  <img src="camera_cal_output/undistort_imgs/calibration_undistort1.jpg" width="350"/>
 
 ### Distortion Correction
 
